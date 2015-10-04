@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:id="@+id/mainListViewParent"
+    android:paddingTop="14dp"
+    android:weightSum="1">
+
+    <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        card_view:cardBackgroundColor="#474747"
+        card_view:cardElevation="15dp"
+        android:id="@+id/cv"
+        android:background="?android:attr/selectableItemBackground"
+        >
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp">
+
+                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:orientation="vertical"
+        android:paddingLeft="5dp">
+
+        <TextView
+            android:id="@+id/dayWorking"
+            android:layout_width="fill_parent"
+            android:layout_height="45dp"
+            android:textSize="30dp"
+            android:textColor="#FFFFFF"
+            android:text="Sun"
+            android:textAlignment="center"
+            android:gravity="center|center_horizontal"/>
+
+        <TextView
+            android:id="@+id/dayWorkingLabel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13dp"
+            android:textColor="#FFFFFF"
+            android:text="Sept 10"
+            android:textAlignment="center"
+            android:textStyle="normal"
+            android:gravity="center_horizontal"/>
+
+    </LinearLayout>
+                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="70dp"
+        android:orientation="vertical"
+        android:layout_weight="0.97"
+        android:gravity="center|center_horizontal">
+
+        <TextView
+            android:id="@+id/startShift"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textColor="#FFFFFF"
+            android:text="12:00 PM"
+            android:textAlignment="center"
+            android:gravity="center_horizontal"
+            android:paddingTop="3dp" />
+
+        <TextView
+            android:id="@+id/startEndShiftTo"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="12dp"
+            android:textColor="#FFFFFF"
+            android:text="to"
+            android:textAlignment="center"
+            android:gravity="center_horizontal"/>
+
+        <TextView
+            android:id="@+id/endShift"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:textColor="#FFFFFF"
+            android:text="8:00 PM"
+            android:textAlignment="center"
+            android:gravity="center_horizontal"/>
+
+    </LinearLayout>
+                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:orientation="vertical"
+        android:paddingRight="5dp">
+
+        <TextView
+            android:id="@+id/hoursWorked"
+            android:layout_width="fill_parent"
+            android:layout_height="45dp"
+            android:textSize="40dp"
+            android:textColor="#FFFFFF"
+            android:text="8"
+            android:textAlignment="center"
+            android:gravity="center|center_horizontal"/>
+
+        <TextView
+            android:id="@+id/hoursWorkedLabel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13dp"
+            android:textColor="#FFFFFF"
+            android:text="Hours"
+            android:textAlignment="center"
+            android:textStyle="normal"
+            android:gravity="center_horizontal"/>
+
+    </LinearLayout>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.cttapp.bby.mytlc" >
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".ShiftViewList"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".layer8apps.MyTlc"
+            android:label="@string/app_name"
+            android:parentActivityName=".ShiftViewList" >
+        </activity>
+        <activity
+            android:name=".layer8apps.Settings"
+            android:label="@string/app_name" >
+        </activity>
+
+        <receiver
+            android:name=".layer8apps.AlarmReceiver"
+            android:process=":remote" />
+        <receiver
+            android:name=".layer8apps.BootReceiver"
+            android:enabled="true"
+            android:permission="android.permission.RECEIVE_BOOT_COMPLETED" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_REPLACED" />
+
+                <data
+                    android:path="com.cttapp.bby.mytlc.layer8apps"
+                    android:scheme="package" />
+            </intent-filter>
+        </receiver>
+
+        <service android:name=".layer8apps.CalendarHandler" />
+
+        <activity
+            android:name=".RSSView"
+            android:label="@string/title_activity_rssview"
+            android:parentActivityName=".ShiftViewList" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.cttapp.bby.mytlc.ShiftViewList" />
+        </activity>
+    </application>
+
+</manifest>

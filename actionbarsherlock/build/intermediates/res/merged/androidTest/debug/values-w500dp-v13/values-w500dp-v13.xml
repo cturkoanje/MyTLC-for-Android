@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- From: file:/Users/chris/Desktop/MyTLC%20for%20Android/actionbarsherlock/build/intermediates/bundles/debug/res/values-w500dp-v13/values-w500dp-v13.xml -->
+    <eat-comment/>
+    <integer name="abs__max_action_buttons">4</integer>
+</resources>
