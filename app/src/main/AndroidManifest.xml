@@ -65,6 +65,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.cttapp.bby.mytlc.ShiftViewList" />
         </activity>
+
     </application>
 
 </manifest>

@@ -236,9 +236,6 @@ public class CalendarHandler extends IntentService {
             showError("Couldn't add your shifts to your calendar");
         }
 
-        System.out.println("Final Days:\n" + finalDays.get(0)[0]);
-        System.out.println("Final Days:\n" + finalDays.get(0)[1]);
-        System.out.println("Final Days:\n" + finalDays.get(0)[2]);
     }
 
     /************

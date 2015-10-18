@@ -22,6 +22,9 @@ import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
+
 public class RSSView extends Activity {
 
     @Override
@@ -57,6 +60,7 @@ public class RSSView extends Activity {
 
             webview.setWebViewClient(new MyWebViewClient());
             webview.loadUrl("https://retailapps.bestbuy.com");
+
         }
 
     }
@@ -96,10 +100,43 @@ public class RSSView extends Activity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.scan_button) {
+
+            IntentIntegrator integrator = new IntentIntegrator(this);
+            integrator.initiateScan();
+
             return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
+        if (scanResult != null) {
+
+            String fullData = scanResult.getContents();
+            String important = fullData.substring(20);
+
+            Log.d("BARCODEDATA", "Full Data: " + fullData);
+            Log.d("BARCODEDATA", "important: " + fullData.indexOf("http://bby.us/?c=BB0"));
+
+            if(fullData.indexOf("http://bby.us/?c=BB0") >= 0)
+            {
+                String store = important.substring(0, 4);
+                String sku = important.substring(4);
+
+                //[NSString stringWithFormat:@"$(\"#EmailId\").val(\"%@\");$(\"#Password\").val(\"%@\");$('input[type=\"submit\"]').click();", email, password];
+                // [NSString stringWithFormat:@"$(\"#SkuForCurrentStore\").val(\"%@\");$(\"#StoreNoForCurrentStore\").val(\"%@\");", [data objectForKey:@"sku"], [data objectForKey:@"store"]];
+
+                String jsScript = "javascript:$(\"#SkuForCurrentStore\").val(\"" + sku + "\");$(\"#StoreNoForCurrentStore\").val(\"" + store + "\");$('#SearchCurrentStore').click();";
+
+                WebView mWebView = (WebView)findViewById(R.id.mainWebView);
+                mWebView.loadUrl(jsScript);
+
+            }
+
+
+        }
     }
 }
