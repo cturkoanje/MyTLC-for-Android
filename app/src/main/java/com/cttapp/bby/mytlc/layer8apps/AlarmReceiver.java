@@ -29,8 +29,10 @@ import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Messenger;
+import android.util.Log;
 
 import com.cttapp.bby.mytlc.R;
+import com.cttapp.bby.mytlc.ShiftViewList;
 
 /************
  *  PURPOSE: This class handles the notifications and
@@ -56,6 +58,8 @@ public class AlarmReceiver extends BroadcastReceiver {
             pf = new Preferences(cContext);
 
             String[] creds = getSettings();
+
+            Log.d("ALARM", "onRecieve");
 
             // This is our background service.  We create it and assign
             // variables that we'll be using.
@@ -128,7 +132,8 @@ public class AlarmReceiver extends BroadcastReceiver {
             Intent intent = new Intent(cContext, MyTlc.class);
             contentIntent = PendingIntent.getActivity(cContext, 8416, intent, 0);
         } else {
-            contentIntent = PendingIntent.getActivity(cContext, 8416, new Intent(), 0);
+            Intent intent = new Intent(cContext, ShiftViewList.class);
+            contentIntent = PendingIntent.getActivity(cContext, 8416, intent, 0);
         }
         not.setLatestEventInfo(cContext, "MyTLC", msg, contentIntent);
         // Show the notification
