@@ -1,6 +1,8 @@
 package com.cttapp.bby.mytlc;
 
 import android.app.Activity;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
@@ -76,14 +78,18 @@ public class ShiftViewList extends Activity implements View.OnClickListener {
 
         if(jsonString != null) {
 
-            List<ShiftViewObject> persons = persons = new ArrayList<>();
-            persons = getShiftsFromJSON(jsonString);
+            List<ShiftViewObject> persons = getShiftsFromJSON(jsonString);
+            if(persons == null)
+                return;
             Collections.reverse(persons);
             ShiftAdapter adapter = new ShiftAdapter(persons);
             rv.setAdapter(adapter);
         }
 
         Log.d("onCreate", "finished on create");
+
+        NotificationManager notificationManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.cancel(0);
 
     }
 
@@ -204,12 +210,16 @@ public class ShiftViewList extends Activity implements View.OnClickListener {
 
         if(jsonString != null) {
 
-            List<ShiftViewObject> persons = persons = new ArrayList<>();
-            persons = getShiftsFromJSON(jsonString);
+            List<ShiftViewObject> persons = getShiftsFromJSON(jsonString);
+            if(persons == null)
+                return;
             Collections.reverse(persons);
             ShiftAdapter adapter = new ShiftAdapter(persons);
             rv.setAdapter(adapter);
         }
+
+        NotificationManager notificationManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.cancel(0);
 
     }
 
