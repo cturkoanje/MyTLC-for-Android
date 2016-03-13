@@ -67,7 +67,7 @@ public class RSSView extends Activity {
         WifiInfo wifiInfo = wifiManager.getConnectionInfo();
         Log.d("SSID", wifiInfo.getSSID());
 
-        if (!wifiInfo.getSSID().equalsIgnoreCase("\"BBYDemo\"") && !wifiInfo.getSSID().equalsIgnoreCase("\"BBYDemoFast\"") && !wifiInfo.getSSID().equalsIgnoreCase("\"iD Tech - Staff\""))
+        if (!wifiInfo.getSSID().equalsIgnoreCase("\"BBYDemo\"") && !wifiInfo.getSSID().equalsIgnoreCase("\"BBYDemoFast\"") && !wifiInfo.getSSID().equalsIgnoreCase("\"Demo\"") && !wifiInfo.getSSID().equalsIgnoreCase("\"MDC\""))
         {
             AlertDialog alertDialog = new AlertDialog.Builder(this).create();
             alertDialog.setTitle("WiFi Error");
@@ -89,8 +89,8 @@ public class RSSView extends Activity {
             webSettings.setJavaScriptEnabled(true);
 
             webview.setWebViewClient(new MyWebViewClient());
-            //webview.loadUrl("https://retailapps.bestbuy.com");
-            webview.loadUrl("http://beta.ctthosting.com/rss/");
+            webview.loadUrl("https://retailapps.bestbuy.com");
+            //webview.loadUrl("http://beta.ctthosting.com/rss/");
 
         }
 
