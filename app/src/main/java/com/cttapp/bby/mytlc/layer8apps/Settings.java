@@ -50,7 +50,7 @@ public class Settings extends SherlockActivity {
 
     private Spinner spinCal, spinNotifications, spinTimezone;
 	private Spinner spinSync, spinWeekly;
-    private Button btnStore, btnSync;
+    private Button btnStore, btnSync, btnEmailReset;
     private EditText txtStore, txtAddress, txtName;
     private TextView txtSync;
     int hour = 0;
@@ -78,6 +78,7 @@ public class Settings extends SherlockActivity {
         setContentView(R.layout.settings);
 
         btnStore = (Button) findViewById(R.id.btnGetStore);
+        btnEmailReset = (Button) findViewById(R.id.btnEmailReset);
 
         txtAddress = (EditText) findViewById(R.id.txtAddress);
         txtStore = (EditText) findViewById(R.id.txtStore);
@@ -205,6 +206,16 @@ public class Settings extends SherlockActivity {
                     StoreHelper helper = new StoreHelper(getApplicationContext(), settings);
                     helper.getStoreAddress(storeId);
                 }
+            }
+        });
+
+        btnEmailReset.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+                pf.setEmail("");
+                Toast.makeText(getApplicationContext(), "Email has been reset, you can enter in the new email when you launch inventory again.", Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -707,6 +718,7 @@ public class Settings extends SherlockActivity {
         // Cancel the alarm
         am.cancel(sender);
     }
+
 
     /************
      *  PURPOSE: Changes the saved theme based on the users selection

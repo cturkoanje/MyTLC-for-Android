@@ -228,6 +228,12 @@ public class Preferences {
         return getString("pass");
     }
 
+    public String getEmail() {
+        return getString("bbyEmail");
+    }
+    public String getLocation() {
+        return getString("locationNumber");
+    }
     /************
      *  PURPOSE: Store the provided password
      *  ARGUMENTS: String pass
@@ -240,6 +246,17 @@ public class Preferences {
         return (verify.equals(pass));
     }
 
+    public boolean setEmail(String email) {
+        saveString("bbyEmail", email);
+        String verify = getString("bbyEmail");
+        return (verify.equals(email));
+    }
+
+    public boolean setLocation(String location) {
+        saveString("locationNumber", location);
+        String verify = getString("locationNumber");
+        return (verify.equals(location));
+    }
     /************
      *  PURPOSE: Delete the stored password
      *  ARGUMENTS: null

@@ -771,6 +771,7 @@ public class CalendarHandler extends IntentService {
         SimpleDateFormat formatter=new SimpleDateFormat("dd-MMM-yyyy hh:mm:ss a");
 
 
+        String locationNumber = "";
 
         for(Shift shift: shiftList)
         {
@@ -781,6 +782,12 @@ public class CalendarHandler extends IntentService {
                 newShift.put("address", shift.getAddress());
                 newShift.put("startDate", formatter.format(shift.getStartDate().getTime()));
                 newShift.put("endDate", formatter.format(shift.getEndDate().getTime()));
+
+                locationNumber = shift.getDepartment();
+                String[] parts = locationNumber.split("-");
+                locationNumber = parts[1].substring(2);
+
+
             }
             catch (JSONException e) {
                 e.printStackTrace();
@@ -792,8 +799,12 @@ public class CalendarHandler extends IntentService {
         System.out.println("Shift JSON");
         System.out.println(shiftArray.toString());
 
+        System.out.println("Location");
+        System.out.println(locationNumber);
+
         Preferences pf = new Preferences(this);
         pf.saveJSONString(shiftArray.toString());
+        pf.setLocation(locationNumber);
 
         /*
         this.title = title;

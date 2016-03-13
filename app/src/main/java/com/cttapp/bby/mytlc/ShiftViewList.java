@@ -45,6 +45,7 @@ public class ShiftViewList extends Activity implements View.OnClickListener {
 
         setContentView(R.layout.activity_shift_view_list);
 
+
         Log.d("onCreate", "set content view");
 
         Bundle bundle = getIntent().getExtras();
@@ -200,6 +201,10 @@ public class ShiftViewList extends Activity implements View.OnClickListener {
         {
             Intent newView = new Intent(getBaseContext(), MyTlc.class);
             startActivity(newView);
+
+            //Intent newView = new Intent(getBaseContext(), AlertDetailActivity.class);
+            //newView.putExtra("URL", "https://s3.amazonaws.com/mytlc/files/android-init.html");
+            //startActivity(newView);
         }
 
         RecyclerView rv = (RecyclerView) findViewById(R.id.rv);
@@ -223,8 +228,7 @@ public class ShiftViewList extends Activity implements View.OnClickListener {
 
     }
 
-    public void onClick(View v)
-    {
+    public void onClick(View v) {
 
     }
 }
